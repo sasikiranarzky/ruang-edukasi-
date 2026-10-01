@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Ruang Edukasi | Learn, Grow, Inspire</title>
+
+  <meta name="description" content="Ruang Edukasi adalah blog sederhana tentang pendidikan, kehidupan mahasiswa, teknologi, dan tips belajar.">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: #f7f8fc;
+      color: #222;
+      line-height: 1.7;
+    }
+
+    /* NAVBAR */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(255,255,255,0.95);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid #e8e8e8;
+      padding: 16px 8%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 22px;
+      font-weight: 800;
+      color: #3949ab;
+    }
+
+    .logo span {
+      color: #222;
+    }
+
+    nav ul {
+      display: flex;
+      list-style: none;
+      gap: 25px;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: #333;
+      font-weight: 600;
+      transition: 0.3s;
+    }
+
+    nav a:hover {
+      color: #3949ab;
+    }
+
+    /* HERO */
+    .hero {
+      min-height: 70vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 70px 8%;
+      background: linear-gradient(135deg, #eef0ff, #ffffff);
+    }
+
+    .hero-content {
+      max-width: 800px;
+    }
+
+    .hero h1 {
+      font-size: clamp(40px, 7vw, 70px);
+      line-height: 1.1;
+      margin-bottom: 20px;
+      color: #252b61;
+    }
+
+    .hero h1 span {
+      color: #5c6bc0;
+    }
+
+    .hero p {
+      font-size: 18px;
+      color: #666;
+      margin-bottom: 30px;
+    }
+
+    .button {
+      display: inline-block;
+      background: #3949ab;
+      color: white;
+      padding: 13px 25px;
+      border-radius: 30px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+
+    .button:hover {
+      transform: translateY(-3px);
+      background: #283593;
+    }
+
+    /* GENERAL SECTION */
+    section {
+      padding: 75px 8%;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 45px;
+    }
+
+    .section-title h2 {
+      font-size: 34px;
+      color: #252b61;
+      margin-bottom: 10px;
+    }
+
+    .section-title p {
+      color: #777;
+    }
+
+    /* ARTICLES */
+    .articles {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 30px;
+      max-width: 1100px;
+      margin: auto;
+    }
+
+    .card {
+      background: white;
+      border-radius: 18px;
+      overflow: hidden;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.07);
+      transition: 0.3s;
+    }
+
+    .card:hover {
+      transform: translateY(-7px);
+      box-shadow: 0 15px 35px rgba(0,0,0,0.12);
+    }
+
+    .card img {
+      width: 100%;
+      height: 230px;
+      object-fit: cover;
+    }
+
+    .card-content {
+      padding: 25px;
+    }
+
+    .label {
+      display: inline-block;
+      background: #eef0ff;
+      color: #3949ab;
+      padding: 5px 12px;
+      border-radius: 20px;
+      font-size: 13px;
+      font-weight: bold;
+      margin-bottom: 12px;
+    }
+
+    .card h3 {
+      font-size: 22px;
+      margin-bottom: 12px;
+      color: #292d4f;
+    }
+
+    .card p {
+      color: #666;
+      font-size: 15px;
+      margin-bottom: 15px;
+    }
+
+    .read-more {
+      color: #3949ab;
+      font-weight: bold;
+      cursor: pointer;
+      border: none;
+      background: none;
+      font-size: 15px;
+    }
+
+    .full-text {
+      display: none;
+      margin-top: 15px;
+      color: #555;
+      font-size: 15px;
+    }
+
+    /* ABOUT */
+    .about {
+      background: white;
+    }
+
+    .about-box {
+      max-width: 900px;
+      margin: auto;
+      text-align: center;
+    }
+
+    .about-box p {
+      color: #666;
+      margin-bottom: 15px;
+    }
+
+    /* BUSINESS */
+    .business-box {
+      max-width: 1000px;
+      margin: auto;
+      background: white;
+      padding: 35px;
+      border-radius: 18px;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.06);
+    }
+
+    .business-box h3 {
+      color: #3949ab;
+      margin-bottom: 15px;
+    }
+
+    .business-box ul {
+      margin-left: 20px;
+      color: #555;
+    }
+
+    /* COMMENTS */
+    .comments {
+      max-width: 900px;
+      margin: auto;
+      text-align: center;
+    }
+
+    .comments p {
+      color: #666;
+      margin-bottom: 20px;
+    }
+
+    /* FOOTER */
+    footer {
+      background: #252b61;
+      color: white;
+      text-align: center;
+      padding: 30px 8%;
+    }
+
+    footer p {
+      margin: 5px 0;
+      font-size: 14px;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+      nav {
+        padding: 15px 5%;
+      }
+
+      nav ul {
+        gap: 12px;
+      }
+
+      nav a {
+        font-size: 13px;
+      }
+
+      .articles {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        min-height: 60vh;
+      }
+
+      section {
+        padding: 60px 5%;
+      }
+    }
+
+    @media (max-width: 500px) {
+      nav {
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      nav ul {
+        gap: 15px;
+      }
+
+      .hero h1 {
+        font-size: 42px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- NAVIGATION -->
+  <nav>
+    <div class="logo">Ruang<span>Edukasi</span></div>
+
+    <ul>
+      <li><a href="#home">Home</a></li>
+      <li><a href="#articles">Blog</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#business">Business</a></li>
+      <li><a href="#comments">Comments</a></li>
+    </ul>
+  </nav>
+
+
+  <!-- HERO -->
+  <section class="hero" id="home">
+    <div class="hero-content">
+
+      <h1>
+        Learn.<br>
+        <span>Grow. Inspire.</span>
+      </h1>
+
+      <p>
+        Ruang Edukasi adalah blog sederhana yang membahas pendidikan,
+        kehidupan mahasiswa, teknologi, dan kebiasaan belajar.
+      </p>
+
+      <a href="#articles" class="button">
+        Explore Articles
+      </a>
+
+    </div>
+  </section>
+
+
+  <!-- ARTICLES -->
+  <section id="articles">
+
+    <div class="section-title">
+      <h2>Latest Articles</h2>
+      <p>Ideas and insights for students and education enthusiasts.</p>
+    </div>
+
+    <div class="articles">
+
+      <!-- ARTICLE 1 -->
+      <article class="card">
+
+        <img
+          src="https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=900&q=80"
+          alt="Students learning with technology"
+        >
+
+        <div class="card-content">
+
+          <span class="label">Technology</span>
+
+          <h3>Peran Teknologi dalam Pendidikan</h3>
+
+          <p>
+            Teknologi telah menjadi bagian penting dalam proses pendidikan
+            dan membantu menciptakan pengalaman belajar yang lebih fleksibel.
+          </p>
+
+          <button class="read-more" onclick="toggleText(this)">
+            Read more →
+          </button>
+
+          <div class="full-text">
+            Teknologi memungkinkan mahasiswa dan peserta didik memperoleh
+            sumber belajar dari berbagai tempat. Platform pembelajaran
+            digital, video edukasi, sistem informasi akademik, dan berbagai
+            aplikasi kolaborasi dapat membantu proses belajar menjadi lebih
+            efektif. Namun, penggunaan teknologi tetap perlu disertai
+            kemampuan memilih informasi yang relevan dan bertanggung jawab.
+          </div>
+
+        </div>
+      </article>
+
+
+      <!-- ARTICLE 2 -->
+      <article class="card">
+
+        <img
+          src="https://images.unsplash.com/photo-1497633762265-9d179a990aa6?auto=format&fit=crop&w=900&q=80"
+          alt="Books and study materials"
+        >
+
+        <div class="card-content">
+
+          <span class="label">Student Life</span>
+
+          <h3>Tips Mengatur Waktu sebagai Mahasiswa</h3>
+
+          <p>
+            Mengatur waktu membantu mahasiswa menjalankan aktivitas
+            akademik maupun kegiatan lainnya secara lebih terarah.
+          </p>
+
+          <button class="read-more" onclick="toggleText(this)">
+            Read more →
+          </button>
+
+          <div class="full-text">
+            Salah satu cara mengatur waktu adalah membuat daftar prioritas.
+            Tugas dengan deadline terdekat dapat dikerjakan terlebih dahulu.
+            Mahasiswa juga perlu menyediakan waktu untuk istirahat,
+            organisasi, keluarga, dan aktivitas pribadi. Konsistensi lebih
+            penting daripada membuat jadwal yang terlalu rumit.
+          </div>
+
+        </div>
+      </article>
+
+
+      <!-- ARTICLE 3 -->
+      <article class="card">
+
+        <img
+          src="https://images.unsplash.com/photo-1434030216411-0b793f4b4173?auto=format&fit=crop&w=900&q=80"
+          alt="Student studying"
+        >
+
+        <div class="card-content">
+
+          <span class="label">Study Tips</span>
+
+          <h3>Membangun Kebiasaan Belajar yang Efektif</h3>
+
+          <p>
+            Kebiasaan belajar yang konsisten dapat membantu mahasiswa
+            memahami materi secara lebih terstruktur.
+          </p>
+
+          <button class="read-more" onclick="toggleText(this)">
+            Read more →
+          </button>
+
+          <div class="full-text">
+            Belajar secara efektif dapat dimulai dengan menentukan tujuan
+            belajar yang jelas. Lingkungan yang minim gangguan juga dapat
+            membantu konsentrasi. Selain itu, membuat rangkuman,
+            melakukan latihan soal, dan mengevaluasi pemahaman secara
+            berkala dapat membuat proses belajar lebih terarah.
+          </div>
+
+        </div>
+      </article>
+
+
+      <!-- ARTICLE 4 -->
+      <article class="card">
+
+        <img
+          src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&w=900&q=80"
+          alt="Education and classroom"
+        >
+
+        <div class="card-content">
+
+          <span class="label">Education</span>
+
+          <h3>Pentingnya Manajemen Pendidikan di Sekolah</h3>
+
+          <p>
+            Manajemen pendidikan membantu sekolah mengelola sumber daya
+            dan kegiatan pendidikan agar tujuan organisasi dapat tercapai.
+          </p>
+
+          <button class="read-more" onclick="toggleText(this)">
+            Read more →
+          </button>
+
+          <div class="full-text">
+            Manajemen pendidikan mencakup berbagai kegiatan seperti
+            perencanaan, pengorganisasian, pelaksanaan, dan evaluasi.
+            Pengelolaan yang baik dapat membantu sekolah menggunakan
+            sumber daya manusia, sarana, informasi, dan anggaran secara
+            lebih terarah untuk mendukung proses pendidikan.
+          </div>
+
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+
+  <!-- ABOUT -->
+  <section class="about" id="about">
+
+    <div class="section-title">
+      <h2>About Ruang Edukasi</h2>
+    </div>
+
+    <div class="about-box">
+
+      <p>
+        Ruang Edukasi dibuat sebagai ruang berbagi informasi mengenai
+        pendidikan dan kehidupan mahasiswa.
+      </p>
+
+      <p>
+        Blog ini mengangkat topik sederhana yang dekat dengan kehidupan
+        mahasiswa, mulai dari teknologi pendidikan, manajemen waktu,
+        kebiasaan belajar, hingga manajemen pendidikan.
+      </p>
+
+    </div>
+  </section>
+
+
+  <!-- BUSINESS USE -->
+  <section id="business">
+
+    <div class="section-title">
+      <h2>Business Use</h2>
+      <p>How can an education blog support a business?</p>
+    </div>
+
+    <div class="business-box">
+
+      <h3>Potential Business Benefits</h3>
+
+      <p>
+        Blog seperti Ruang Edukasi dapat digunakan oleh perusahaan yang
+        bergerak di bidang pendidikan, seperti platform pembelajaran,
+        penerbit buku, lembaga kursus, dan perusahaan teknologi pendidikan.
+        Blog dapat menjadi media untuk memberikan informasi sekaligus
+        memperkenalkan produk atau layanan kepada calon pelanggan.
+      </p>
+
+      <br>
+
+      <h3>Blogger / Blog Tools and Their Business Uses</h3>
+
+      <ul>
+        <li>
+          <strong>Posts:</strong>
+          digunakan untuk membuat dan membagikan informasi atau konten
+          yang berkaitan dengan produk dan layanan.
+        </li>
+
+        <li>
+          <strong>Labels:</strong>
+          membantu mengelompokkan artikel berdasarkan topik sehingga
+          pengunjung lebih mudah menemukan informasi.
+        </li>
+
+        <li>
+          <strong>Images:</strong>
+          membantu membuat konten lebih menarik dan memberikan
+          informasi visual kepada pengunjung.
+        </li>
+
+        <li>
+          <strong>Comments:</strong>
+          dapat digunakan untuk mendapatkan tanggapan dan feedback
+          dari pembaca.
+        </li>
+
+        <li>
+          <strong>Pages:</strong>
+          dapat digunakan untuk membuat halaman seperti About,
+          Contact, dan informasi perusahaan.
+        </li>
+
+        <li>
+          <strong>Search:</strong>
+          membantu pengunjung menemukan konten yang mereka butuhkan.
+        </li>
+      </ul>
+
+    </div>
+  </section>
+
+
+  <!-- COMMENTS -->
+  <section id="comments">
+
+    <div class="section-title">
+      <h2>Comments</h2>
+      <p>
+        Registered GitHub users can participate in discussions
+        when the commenting system is enabled.
+      </p>
+    </div>
+
+    <div class="comments">
+
+      <p>
+        Your feedback helps improve the content of this blog.
+      </p>
+
+      <a
+        href="https://github.com/"
+        target="_blank"
+        class="button"
+      >
+        Join the Discussion
+      </a>
+
+    </div>
+
+  </section>
+
+
+  <!-- FOOTER -->
+  <footer>
+
+    <p><strong>Ruang Edukasi</strong></p>
+
+    <p>
+      Learn • Grow • Inspire
+    </p>
+
+    <p>
+      © 2026 Ruang Edukasi. Educational project.
+    </p>
+
+  </footer>
+
+
+  <!-- JAVASCRIPT -->
+  <script>
+    function toggleText(button) {
+
+      const text = button.nextElementSibling;
+
+      if (text.style.display === "block") {
+
+        text.style.display = "none";
+        button.textContent = "Read more →";
+
+      } else {
+
+        text.style.display = "block";
+        button.textContent = "Show less ↑";
+
+      }
+    }
+  </script>
+
+</body>
+</html>
